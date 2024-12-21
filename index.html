@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Rental Service</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>BikeRent</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#bikes">Bikes</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Your Adventure Awaits!</h2>
+        <p>Rent the best bikes for your ride and explore the city.</p>
+        <a href="#bikes" class="cta-button">Browse Bikes</a>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>At BikeRent, we provide a variety of high-quality bikes for rent, including mountain bikes, road bikes, and electric bikes. Whether you're an adventure enthusiast, a casual rider, or someone looking for an eco-friendly commute, we've got the perfect bike for you!</p>
+        <p>Our goal is to offer an easy and affordable way for you to explore the city or go on outdoor adventures. With flexible rental terms and great customer service, we make bike renting convenient and hassle-free.</p>
+    </section>
+
+    <section id="bikes" class="bike-list">
+        <h2>Our Bike Selection</h2>
+        <div class="bike">
+            <img src="/images/images (1).jpg" alt="Adventure Bike">
+            <h3>Adventure Bike</h3>
+            <p>Rs.1500/day</p>
+            <div class="duration-selector">
+                <label for="duration">Choose Duration:</label>
+                <select name="duration" id="duration">
+                    <option value="1">1 Day</option>
+                    <option value="2">2 Days</option>
+                    <option value="3">3 Days</option>
+                    <option value="7">1 Week</option>
+                </select>
+            </div>
+            <button>Rent Now</button>
+        </div>
+        <div class="bike">
+            <img src="/images/image(2).jpg" alt="Normal Bike">
+            <h3>Normal Bike</h3>
+            <p>Rs.1000/day</p>
+            <div class="duration-selector">
+                <label for="duration">Choose Duration:</label>
+                <select name="duration" id="duration">
+                    <option value="1">1 Day</option>
+                    <option value="2">2 Days</option>
+                    <option value="3">3 Days</option>
+                    <option value="7">1 Week</option>
+                </select>
+            </div>
+            <button>Rent Now</button>
+        </div>
+        <div class="bike">
+            <img src="/images/image(3).jpg" alt="Electric Bike">
+            <h3>Electric Bike</h3>
+            <p>Rs.500/day</p>
+            <div class="duration-selector">
+                <label for="duration">Choose Duration:</label>
+                <select name="duration" id="duration">
+                    <option value="1">1 Day</option>
+                    <option value="2">2 Days</option>
+                    <option value="3">3 Days</option>
+                    <option value="7">1 Week</option>
+                </select>
+            </div>
+            <button>Rent Now</button>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2>Customer Reviews</h2>
+        <div class="testimonial">
+            <p>"The best bike rental service I've used! Affordable prices and great customer support. Highly recommend!"</p>
+            <p>- K.R.S BALAMURUGAN.</p>
+        </div>
+        <div class="testimonial">
+            <p>"I rented an electric bike and had an amazing time exploring the city. It was super convenient and fun!"</p>
+            <p>- R.SRI BHARATH.</p>
+        </div>
+        <div class="testimonial">
+            <p>"I  got an adventure  bike for rental and had an amazing time exploring the city. It was super power and power exhauster !"</p>
+            <p>- P. THANOS.</p>
+        </div>
+        
+    </section>
+
+    <section class="pricing">
+        <h2>Pricing Plans</h2>
+        <div class="pricing-plan">
+            <h3>Basic Plan</h3>
+            <p>Rs.1000/day for a normal bike</p>
+        </div>
+        <div class="pricing-plan">
+            <h3>Adventure Plan</h3>
+            <p>Rs.1500/day for an adventure bike</p>
+        </div>
+        <div class="pricing-plan">
+            <h3>Electric Plan</h3>
+            <p>Rs.500/day for an electric bike</p>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="map">
+        <h2>Find Us</h2>
+        <div id="google-map">
+            <!-- You can integrate Google Map API or embed a map here -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0674950054057!2d144.9552115!3d-37.8152065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad665f21f5b6d3f%3A0x5045675218cd78!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1671077092641!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, feel free to reach out!</p>
+        <form action="#">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div class="contact-details">
+            <p><strong>Email:</strong> vigneshvicky43145@gmail.com</p>
+            <p><strong>Phone:</strong> +9025523274</p>
+            <p><strong>Address:</strong> 123 Bike Street,Singanallur, Coimbatore</p>
+        </div>
+    </section>
+
+    <section id="login" class="login">
+        <h2>Login to Your Account</h2>
+        <form action="#">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#">Sign up</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 BikeRent. All rights reserved.</p>
+    </footer>
+</body>
+</html>
