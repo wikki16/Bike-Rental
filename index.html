@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VelocityRide | Premium Bike Rentals</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <style>
         :root {
             --primary: #00a8ff;
@@ -2510,44 +2510,155 @@
     </div>
 
     <!-- JavaScript -->
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
     <script>
-        // Mapbox initialization
-        mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2p0MG01MXRqMW45cjQzb2R6b2ptc3J4MSJ9.zA2W0IkI0c6KaAhJfk9bWg';
-        const map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v12',
-            center: [-74.006, 40.7128], // New York coordinates
-            zoom: 12
-        });
+        // Google Maps initialization
+        let map;
 
-        // Add markers for bike locations
-        const locations = [
-            {
-                name: 'Downtown Station',
-                coordinates: [-74.013, 40.713],
-                description: '24/7 access, 50+ bikes available'
-            },
-            {
-                name: 'Midtown Station',
-                coordinates: [-74.006, 40.753],
-                description: 'Near Central Park, 30+ bikes available'
-            },
-            {
-                name: 'Uptown Station',
-                coordinates: [-73.959, 40.779],
-                description: 'Near Columbia University, 20+ bikes available'
-            }
-        ];
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 40.7128, lng: -74.006 }, // New York coordinates
+                zoom: 12,
+                styles: [
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#193341"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#2c5a71"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#29768a"
+                            },
+                            {
+                                "lightness": -37
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#406d80"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#406d80"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#3e606f"
+                            },
+                            {
+                                "weight": 2
+                            },
+                            {
+                                "gamma": 0.84
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "weight": 0.6
+                            },
+                            {
+                                "color": "#1a3541"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#2c5a71"
+                            }
+                        ]
+                    }
+                ]
+            });
 
-        locations.forEach(location => {
-            const marker = new mapboxgl.Marker()
-                .setLngLat(location.coordinates)
-                .setPopup(new mapboxgl.Popup().setHTML(
-                    `<h3>${location.name}</h3><p>${location.description}</p>`
-                ))
-                .addTo(map);
-        });
+            // Add markers for bike locations
+            const locations = [
+                {
+                    name: 'Downtown Station',
+                    coordinates: { lat: 40.713, lng: -74.013 },
+                    description: '24/7 access, 50+ bikes available'
+                },
+                {
+                    name: 'Midtown Station',
+                    coordinates: { lat: 40.753, lng: -74.006 },
+                    description: 'Near Central Park, 30+ bikes available'
+                },
+                {
+                    name: 'Uptown Station',
+                    coordinates: { lat: 40.779, lng: -73.959 },
+                    description: 'Near Columbia University, 20+ bikes available'
+                }
+            ];
+
+            locations.forEach(location => {
+                const marker = new google.maps.Marker({
+                    position: location.coordinates,
+                    map: map,
+                    title: location.name
+                });
+
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `<h3>${location.name}</h3><p>${location.description}</p>`
+                });
+
+                marker.addListener('click', () => {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
 
         // Modal functionality
         const modals = {
